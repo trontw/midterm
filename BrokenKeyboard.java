@@ -14,7 +14,8 @@ public class BrokenKeyboard {
 		String text = "";
 		boolean home_active = true;
 		boolean end_active = false;
-		boolean prev_end = true;
+		boolean prev_letter = false;
+		boolean new_line = false;
 		while (kb.hasNext()) {
 
 			String word = kb.next();
@@ -41,7 +42,11 @@ public class BrokenKeyboard {
 			// -----------------------------------------------------------------
 			// First time in, we will allow both ^ and $ being true
 			if (home < 0 && end < 0 && home_active == true && end_active != true) {
+				// if (prev_letter == true && new_line != true) {
+				// x.insert_behind_head(word);
+				// } else {
 				x.insert_head(word);
+				// }
 				System.out.println("Inserting head 1: " + word);
 				// Verified - prints: men egg am the am
 			} else if (home < 0 && end < 0 && end_active == true) {
@@ -55,6 +60,9 @@ public class BrokenKeyboard {
 					String subStr4 = word.substring(1, word.length());
 					x.insert_head(subStr4);
 					System.out.println("Inserting head 2: " + subStr4);
+					end_active = false;
+					prev_letter = true;// without a newline before
+					break;
 					// Next, we look at embedded home ^, with letters before and after
 				} else if (end == 0 && word.length() == 1) {
 					// Checking for a single $, then words afterword adding to tail
@@ -66,7 +74,7 @@ public class BrokenKeyboard {
 					end_active = false;
 					if ((word.length() - (i + 1)) == 0) {
 						// If home ^ is at the first position
-						String subStr5a = word.substring(0, word.length() - i);
+						String subStr5a = word.substring(0, word.length() - 1);
 						x.insert_tail(subStr5a);
 						System.out.println("Inserting head 3: " + subStr5a);
 						break;
@@ -90,12 +98,12 @@ public class BrokenKeyboard {
 					System.out.println("Inserting tail 1: " + subStr3);
 				} else if (end == i && end_active != true && word.length() != 1) {
 					String subStr3b = word.substring(0, i);
-					x.insert_head(subStr3b);
+					x.insert_behind_head(subStr3b);
 					end_active = true;
 					String subStr3c = word.substring(i + 1, word.length());
 					x.insert_tail(subStr3c);
-					System.out.println("Inserting head 3b tail: " + subStr3b);
-					System.out.println("Inserting head 3c head: " + subStr3c);
+					System.out.println("Inserting head 3b head: " + subStr3b);
+					System.out.println("Inserting head 3c tail: " + subStr3c);
 				}
 			}
 			/*

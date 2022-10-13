@@ -14,28 +14,6 @@ public class ListSet {
   }
 
   public void insert_head(String key) {
-    /*
-     * if (numelements == size) {
-     * // need to expand the table and rehash the contents
-     * 
-     * ListNode[] oldTable = table;
-     * int oldSize = size;
-     * ListNode cur = null;
-     * 
-     * numelements = 0;
-     * size = 2 * size;
-     * table = new ListNode[size];
-     * 
-     * for (int i = 0; i < oldSize; i++) {
-     * for (ListNode curr = oldTable[i]; curr != null; curr = curr.getNext())
-     * insert_head(curr.getKey());
-     * }
-     * }
-     * // int k = hash(key);
-     * // table[k] = new ListNode(key, table[k]);
-     * // numelements++;
-     * // Inserting at the head of the Linked-List
-     */
     ListNode cur = new ListNode(key, next);
     cur.letters = key;
     // System.out.println("Inside HEAD " + cur.letters);
@@ -43,10 +21,16 @@ public class ListSet {
     head = cur;
   }
 
+  public void insert_behind_head(String key) {
+    ListNode cur = new ListNode(key, next);
+    cur.letters = key;
+    cur.next = null;
+    // System.out.println("Inside HEAD " + cur.letters);
+    cur.next = head.next;
+    head.next = cur;
+  }
+
   public void insert_tail(String key) {
-    // int k = hash(key);
-    // table[k] = new ListNode(key, table[k]);
-    // numelements++;
     // Inserting at the tail of the Linked-List
     ListNode newTail = new ListNode(key, next);
     newTail.letters = key;
