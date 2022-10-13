@@ -64,6 +64,8 @@ public class ListSet {
     // for (int i = 0; i < size; ++i) {
     for (ListNode cur = head; cur != null; cur = cur.next)
       System.out.print(cur.getKey());
+    // text = text.substring(0, text.length() - 1);
+    // Removing the last \n.
     // }
   }
 
