@@ -44,12 +44,12 @@ public class BrokenKeyboard {
 				// if (prev_letter == true && new_line != true) {
 				// x.insert_behind_head(word);
 				// } else {
-				x.insert_head(word);
+				x.insert_head(" " + word + " ");
 				// }
 				// System.out.println("Inserting head 1: " + word);
 				// Verified - prints: men egg am the am
 			} else if (home < 0 && end < 0 && end_active == true) {
-				x.insert_tail(word);
+				x.insert_tail(word + " ");
 				// System.out.println("Inserting tail 1b: " + word);
 			}
 			for (int i = 0; i < word.length(); ++i) {
@@ -57,7 +57,7 @@ public class BrokenKeyboard {
 				if (home == 0) {
 					home_active = true;
 					String subStr4 = word.substring(1, word.length());
-					x.insert_head(subStr4);
+					x.insert_head(subStr4 + " ");
 					// System.out.println("Inserting head 2: " + subStr4);
 					end_active = false;
 					prev_letter = true;// without a newline before
@@ -74,7 +74,7 @@ public class BrokenKeyboard {
 					if ((word.length() - (i + 1)) == 0) {
 						// If home ^ is at the first position
 						String subStr5a = word.substring(0, word.length() - 1);
-						x.insert_tail(subStr5a);
+						x.insert_tail(subStr5a + " ");
 						// System.out.println("Inserting head 3: " + subStr5a);
 						break;
 					}
@@ -83,7 +83,7 @@ public class BrokenKeyboard {
 					x.insert_tail(subStr5c);
 					end_active = false;
 					String subStr5b = word.substring(i + 1, word.length());
-					x.insert_head(subStr5b);
+					x.insert_head(subStr5b + " ");
 					// System.out.println("Inserting head 4 tail: " + subStr5c);
 					// System.out.println("Inserting head 4b head: " + subStr5b);
 				}
@@ -100,7 +100,7 @@ public class BrokenKeyboard {
 					x.insert_behind_head(subStr3b);
 					end_active = true;
 					String subStr3c = word.substring(i + 1, word.length());
-					x.insert_tail(subStr3c);
+					x.insert_tail(subStr3c + " ");
 					// System.out.println("Inserting head 3b head: " + subStr3b);
 					// System.out.println("Inserting head 3c tail: " + subStr3c);
 				}
