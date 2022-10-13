@@ -28,7 +28,6 @@ public class PrintingUsers {
                     // System.out.println("Found " + person);
                     // Remove them from the hash table then continue
                     x.remove(person);
-                    // continue;
                 } else {
                     // One by one, until we get to a "Print", we hash the username
                     // and insert them into the hash table
@@ -40,22 +39,9 @@ public class PrintingUsers {
                         x.print();
                     }
                 }
-                // System.out.println(person);
-                // x.print();
-            }
-            // x.print();
-            // sk.close();
-            // Scanner st = new Scanner(System.in);
-            // System.out.println("We are getting to the second scanner");
-            while (sk.hasNext()) {
-                String person = sk.next();
-                System.out.println("Inside second WHILE, person is " + person);
-                // If person already there, then remove
-                // them from the list
-                if (x.find(person))
-                    System.out.println("Found " + person);
             }
             sk.close();
+            System.out.println("-----------------");
         } catch (IllegalAccessError e) {
             System.out.println("Cannot open file ");
             System.out.println(e);
